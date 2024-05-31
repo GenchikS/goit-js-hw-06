@@ -14,22 +14,17 @@ class Storage {
     }
 
     removeItem(itemToRemove) {
-        // this.#items = [];
-        for (const toRemove of this.#items) {
-            if (toRemove != itemToRemove) {
-                //    this.#items.push(toRemove);
-                console.log(toRemove);
+        // console.log(this.#items);  // перевірка об'єкту який буде ітероуватися
+        const itemsAll = [];
+        for (const key of this.#items) {
+            // console.log(перевірка чи вірно ітерується об'єкт);
+            if (key != itemToRemove) {
+                itemsAll.push(key);
             }
         }
-        return this.#items;
+        return this.#items = itemsAll; // присвоїти та вивести this.#items об'єкт itemsAll
     }
-
-    
 }
-
-
-
-
 
 const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
@@ -37,8 +32,8 @@ console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
 storage.addItem("Droid");
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
 
-// storage.removeItem("Prolonger");
-// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 
-// storage.removeItem("Scaner");
-// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+storage.removeItem("Scaner");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
